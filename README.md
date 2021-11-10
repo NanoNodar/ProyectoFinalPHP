@@ -2,7 +2,7 @@
   El proyecto trata de una plantilla de lo que podria ser un ecommerce, con una base de datos SQL con tablas de usuarios y articulos
   ## Guia
   La pagina tiene dos vistas, una de administrador y otra de cliente.
-  Cualquiera que se registre tendra condicion de cliente y se mostrara en el index los articulos a comprar, acceso a una pagina para editar su usuario y datos, para borrarlo
+  - Cualquiera que se registre tendra condicion de cliente y se mostrara en el index los articulos a comprar, acceso a una pagina para editar su usuario y datos, para borrarlo
     y se le permitira salir de su usuario. El index tiene un aside que muestra distintas categorias, con el detalle que una categoria es un recomendado por el administrador que es
     la que tendra vista de entrada.
    - El usuario con condicion de administrador solo puede obtener ese rango modificando desde la base de datos. Los usuarios administradores tienen de primera vista el mismo index
