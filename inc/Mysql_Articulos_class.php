@@ -13,8 +13,16 @@
             $this->db->execQuery($query);
             return $this->db->getResult();
         }
+
+        public function getRecomended($recomendado){
+            $recomendado=$this->db->escStr($recomendado);
+            
+            $query = "SELECT * FROM articulos WHERE recomendado={$recomendado}";
+            $this->db->execQuery($query);
+            return $this->db->getResult();
+        }
         
-        public function insert($id_categoria,$nombre,$precio,$stock,$url,$detalle){
+        public function insert($id_categoria,$nombre,$precio,$stock,$url,$detalle,$recomendado){
 
             $id_categoria=$this->db->escStr($id_categoria);
             $nombre=$this->db->escStr($nombre);
@@ -22,10 +30,11 @@
             $stock=$this->db->escStr($stock);
             $url=$this->db->escStr($url);
             $detalle=$this->db->escStr($detalle);
+            $recomendado=$this->db->escStr($recomendado);
 
             $query="INSERT INTO articulos". 
-                   "(id_categoria,nombre,precio,stock,url,detalle,detalle) values".
-                   "('{$id_categoria}','{$nombre}','{$precio}','{$stock}','{$url}','{$detalle}')"; 
+                   "(id_categoria,nombre,precio,stock,url,detalle,recomendado) values".
+                   "('{$id_categoria}','{$nombre}','{$precio}','{$stock}','{$url}','{$detalle}','{$recomendado}')"; 
     
            $this->db->execQuery($query);
         }
@@ -38,7 +47,7 @@
             return $this->db->getOneRow();
         }
         
-        public function updateById($id,$id_categoria,$nombre,$precio,$stock,$url,$detalle){
+        public function updateById($id,$id_categoria,$nombre,$precio,$stock,$url,$detalle,$recomendado){
             $id=$this->db->escStr($id);
             $id_categoria=$this->db->escStr($id_categoria);
             $nombre=$this->db->escStr($nombre);
@@ -46,10 +55,10 @@
             $stock=$this->db->escStr($stock);
             $url=$this->db->escStr($url);
             $detalle=$this->db->escStr($detalle);
-     
+            $recomendado=$this->db->escStr($recomendado);
          
             $query="UPDATE articulos ". 
-                   "SET id_categoria='{$id_categoria}',nombre='{$nombre}',precio='{$precio}',stock='{$stock}',url='{$url}',detalle='{$detalle}' ".
+                   "SET id_categoria='{$id_categoria}',nombre='{$nombre}',precio='{$precio}',stock='{$stock}',url='{$url}',detalle='{$detalle}',recomendado={$recomendado} ".
                    "WHERE id={$id}"; 
             
             return $this->db->execQuery($query);        

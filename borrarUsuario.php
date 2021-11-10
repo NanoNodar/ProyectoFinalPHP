@@ -1,9 +1,8 @@
 <?php
 
+    $resultSQL=$db->users->deleteById($idUsuario);
 
-$resultSQL=$db->users->deleteById($idUsuario);
-session_destroy();
-$Smarty->assign('usuarioLoged',"");
-session_start();
+    session_destroy();
+    session_start();
 
-header("Location:index.php");
+    header("Location:index.php");

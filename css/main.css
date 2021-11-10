@@ -14,7 +14,7 @@ body {
     /* justify-content: space-around; */
     /* align-items: center; */
     font-family: Verdana,sans-serif;  
-    background-color:white;
+    /* background-color:white; */
 }
 
 #mainMenu {
@@ -97,4 +97,12 @@ body {
 
 a{
     text-decoration:none;
+}
+
+.producto{
+    max-height: 200px;
+}
+
+.producto img{
+    height: 100px;
 }

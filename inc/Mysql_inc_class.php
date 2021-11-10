@@ -17,11 +17,6 @@ public $articulos;
         $this->articulos=new Mysql_Articulos($this->db);
 
         $this->categorias=new Mysql_Categorias($this->db);
-        /*
-        $this->users=new Mysql_messages($this->db);
-        $this->users=new Mysql_articulos($this->db);
-        $this->users=new Mysql_categorias($this->db);
-        */
     }
 
 

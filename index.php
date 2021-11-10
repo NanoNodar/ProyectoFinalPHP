@@ -1,73 +1,137 @@
 <?php
-session_start();
 
-include("inc/include.inc.php");
-include("Smarty/libs/Smarty.class.php");
+    session_start();
 
-
-$titulo="Smarty (Base Comercio)";
-
-$db=new Mysql_inc();
-
-$Smarty = new Smarty();
+    include("inc/include.inc.php");
+    include("Smarty/libs/Smarty.class.php");
 
 
-$Smarty->assign('titulo',$titulo);
-$Smarty->assign('headerMessage',"");
-$Smarty->assign('usuarioLoged',$_SESSION['usuario']);
-$idUsuario = $_SESSION['id'];
+    $titulo="Proyecto Asin Nodar";
 
+    $db = new Mysql_inc();
 
-if (isset($_GET["action"])){
-    if($_GET["action"]=="register"){
-        include("register.php");
-    }else if($_GET["action"]=="salir"){
-        session_destroy();
-        $Smarty->assign('usuarioLoged',"");
-        session_start();
-        header("Location:index.php");
-    }else if($_GET["action"]=="delete"){
-        $resultSQL=$db->users->deleteById($idUsuario);
-        session_destroy();
-        $Smarty->assign('usuarioLoged',"");
-        session_start();
-        header("Location:index.php");
-    }
-}
-if($_SESSION["access"] == false){
-    include("login.php");
-    echo $_SESSION["usuario"];
-}
-if($_SESSION["access"] == true){
-    if(isset($_GET["connected"])){
-        if($_GET["connected"]=="update"){
+    $Smarty = new Smarty();
 
-            $Smarty->display("main_header.tpl");
-            $Smarty->display("main_menu.tpl");
-            include("update.php");
-            
-            
-        }elseif($_GET["connected"]=="borrarUsuario"){
-            $Smarty->display("main_header.tpl");
-            $Smarty->display("main_menu.tpl");
-            $Smarty->display("borrarUsuario.tpl");
-            echo $idUsuario;
+    $Smarty->assign('titulo',$titulo);
+    $Smarty->assign('headerMessage',"");
+    $Smarty->assign('usuarioLoged',$_SESSION['usuario']);
+    $idUsuario = $_SESSION['id'];
+    $Smarty->display("head.tpl");
+
+    if(isset($_SESSION['id']) ) {  
+        if((time() - $_SESSION['time']) > 600){
+            header('Location:index.php?action=salir');
         }
-    }else{
-        
-        $Smarty->display("main_header.tpl");
-        $Smarty->display("main_menu.tpl");
-        $Smarty->display("main_left_menu.tpl");
-        include("main_body.php");
-        $Smarty->display("main_footer.tpl");
-        echo $_SESSION["usuario"];
     }
-    
-}
 
-//
+    switch ($_GET["action"]){
 
-//echo $_SESSION["usuario"];
-/*
-$Smarty->display("main.tpl");
-*/
+        case "register":
+            include("register.php");
+            break;
+
+        case "salir":
+            session_destroy();
+            session_start();
+            header("Location:index.php");
+            break;
+
+        default:
+            break;
+    }
+
+    switch ($_SESSION["condicion"]) {
+        
+        case "cliente":
+            switch($_GET["connected"]){
+
+                case "update":
+                    $Smarty->display("main_menu.tpl");
+                    include("update.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "borrarUsuario":
+                    $Smarty->display("main_menu.tpl");
+                    $Smarty->display("borrarUsuario.tpl");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                default:
+                    $Smarty->display("main_menu.tpl");
+                    $Smarty->display("main_left_menu.tpl");
+                    include("main_body.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+            }
+            break;
+
+        case 'admin':
+            switch($_GET["admin"]){
+
+                case "update":
+                    $Smarty->display("main_menu_admin.tpl");
+                    include("update.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "borrarUsuario":
+                    $Smarty->display("main_menu_admin.tpl");
+                    $Smarty->display("borrarUsuario.tpl");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "DisabledEnabledUser":
+                    $Smarty->display("main_menu_admin.tpl");
+                    include("DisabledEnabled_users.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "InsertProduct":
+                    $Smarty->display("main_menu_admin.tpl");
+                    include("insert_products.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "DeleteProduct":
+                    $Smarty->display("main_menu_admin.tpl");
+                    include("delete_products.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "EditProduct":
+                    $Smarty->display("main_menu_admin.tpl");
+                    include("update_productos.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "Products":
+                    $Smarty->display("main_menu_admin.tpl");
+                    showResult($result=$db->articulos->getAll());
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                case "Users":
+                    $Smarty->display("main_menu_admin.tpl");
+                    showResult($result=$db->users->getAll());
+                    $Smarty->display("footer.tpl");
+                    break;
+
+                default:
+                    $Smarty->display("main_menu_admin.tpl");
+                    $Smarty->display("main_left_menu.tpl");
+                    include("main_body.php");
+                    $Smarty->display("footer.tpl");
+                    break;
+            }
+            break;
+
+        default:
+
+            if(!$_GET["action"]){
+                include("login.php");
+            }
+        
+            break;
+    }
+    $Smarty->display("footer.tpl");

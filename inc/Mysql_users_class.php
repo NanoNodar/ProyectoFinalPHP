@@ -8,23 +8,22 @@ class Mysql_users{
     } 
     
     public function getAll(){
-        $query = "SELECT * FROM users";
+        $query = "SELECT id,usuario,nombre,apellido,dni,condicion,fechaIng,activo FROM users";
         $this->db->execQuery($query);
-        return $this->db->getAllRows();
+        return $this->db->getResult();
     }
 
-    public function insert($usuario,$nombre,$apellido,$dni,$condicion,$password){
+    public function insert($usuario,$nombre,$apellido,$dni,$password){
 
         $usuario=$this->db->escStr($usuario);
         $nombre=$this->db->escStr($nombre);
         $apellido=$this->db->escStr($apellido);
         $dni=$this->db->escStr($dni);
-        $condicion=$this->db->escStr($condicion);
         $password=$this->db->escStr($password);
 
         $query="INSERT INTO users". 
                "(usuario,nombre,apellido,dni,condicion,password) values".
-               "('{$usuario}','{$nombre}','{$apellido}','{$dni}','{$condicion}','{$password}')"; 
+               "('{$usuario}','{$nombre}','{$apellido}','{$dni}','cliente','{$password}')"; 
 
        $this->db->execQuery($query);
     }
@@ -53,7 +52,7 @@ class Mysql_users{
         $usuario=$this->db->escStr($usuario);
         $password=$this->db->escStr($password);
 
-        $query="SELECT id,usuario,nombre,apellido FROM users WHERE usuario = '{$usuario}' AND password = '{$password}' AND activo='1'";         
+        $query="SELECT id,usuario,nombre,apellido,dni,condicion FROM users WHERE usuario = '{$usuario}' AND password = '{$password}' AND activo='1'";         
         $this->db->execQuery($query);
                      
         return $this->db->getOneRow($query);
