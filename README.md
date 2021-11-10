@@ -9,6 +9,6 @@
    - Las sesiones tienen un límite de tiempo de 10 minutos
    - Se pueden guardar las contraseñas
    - El diseño esta hecho con Bootstrap
-   - Las contraseñas se podrían usar en sha1() pero no me parece correcto ponerlo cuando se está probando la pagina
+   - Las contraseñas se podrían usar en sha1() o md5() pero no me parece correcto ponerlo cuando se está probando la pagina
    - La tabla de mensajes que había antes traía problemas a la hora de eliminar o editar un producto por como estaban relacionadas, por eso fue eliminada
    - En la tabla de artículos fue agregada la columna "recomendado" para poder usar esa categoría en index.php
