@@ -1,5 +1,5 @@
 # Proyecto Final de PHP UTN
-  El proyecto trata de una plantilla de lo que podria ser un ecommerce, con una base de datos SQL con tablas de usuarios y articulos
+  El proyecto trata de una plantilla de lo que podria ser un ecommerce, con una base de datos SQL con tablas de usuarios y articulos y la libreria Smarty
   ## Guia
   La pagina tiene dos vistas, una de administrador y otra de cliente.
   - Cualquiera que se registre tendra condicion de cliente y se mostrara en el index los articulos a comprar, acceso a una pagina para editar su usuario y datos, para borrarlo
