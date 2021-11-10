@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.0.0-rc.0, created on 2021-11-10 12:41:01
+/* Smarty version 4.0.0-rc.0, created on 2021-11-10 13:01:50
   from 'C:\xampp\htdocs\PROYECTO FINAL PHP AVANZADO\templates\main_body.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.0.0-rc.0',
-  'unifunc' => 'content_618bafcd9a9f71_46423156',
+  'unifunc' => 'content_618bb4ae371687_65207892',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '53fcbe708c0766f43812616de898f30c79372c5e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\PROYECTO FINAL PHP AVANZADO\\templates\\main_body.tpl',
-      1 => 1636544455,
+      1 => 1636545650,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_618bafcd9a9f71_46423156 (Smarty_Internal_Template $_smarty_tpl) {
+function content_618bb4ae371687_65207892 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="col-4">
     <?php echo $_smarty_tpl->tpl_vars['headerMessage']->value;?>
 
-    
         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['res']->value, 'r');
 $_smarty_tpl->tpl_vars['r']->do_else = true;

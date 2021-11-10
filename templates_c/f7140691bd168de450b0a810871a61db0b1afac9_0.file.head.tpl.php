@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.0.0-rc.0, created on 2021-11-10 12:30:36
+/* Smarty version 4.0.0-rc.0, created on 2021-11-10 13:01:48
   from 'C:\xampp\htdocs\PROYECTO FINAL PHP AVANZADO\templates\head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.0.0-rc.0',
-  'unifunc' => 'content_618bad5cd722c1_57138818',
+  'unifunc' => 'content_618bb4ace5d5b9_94192980',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f7140691bd168de450b0a810871a61db0b1afac9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\PROYECTO FINAL PHP AVANZADO\\templates\\head.tpl',
-      1 => 1636543820,
+      1 => 1636545621,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_618bad5cd722c1_57138818 (Smarty_Internal_Template $_smarty_tpl) {
+function content_618bb4ace5d5b9_94192980 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,7 +36,7 @@ function content_618bad5cd722c1_57138818 (Smarty_Internal_Template $_smarty_tpl)
 >    <link rel="stylesheet" href="css/styles.css">   
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/main.css">
-        <title>Proyecto Asin Nodar</title>
+    <title>Proyecto Asin Nodar</title>
 </head>
 <body>
 <main class="container-fluid bg-dark bg-opacity-25 min-vh-100" id="contenedor"><?php }
